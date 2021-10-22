@@ -18,7 +18,6 @@ export const state = () => ({
   screensizeformat: '',
   projects: [],
   apiRoot: 'https://api.sandervanwettum.com/?rest_route=/',
-  axiosAgent: https.Agent({rejectUnauthorized: false}),
   viewing: '',
   viewingproject:''
 })
@@ -178,17 +177,17 @@ export const actions = {
 
     // GET ABOUT CONTENT
     let [infoRes, cvRes, newsletterRes, footerRes] = await Promise.all([
-      axios.get(state.apiRoot + 'wp/v2/pages&slug=' + 'info', state.axiosAgent),
-      axios.get(state.apiRoot + 'wp/v2/pages&slug=' + 'cv', state.axiosAgent),
-      axios.get(state.apiRoot + 'wp/v2/pages&slug=' + 'newsletter', state.axiosAgent),
-      axios.get(state.apiRoot + 'wp/v2/pages&slug=' + 'footer', state.axiosAgent),
+      axios.get(state.apiRoot + 'wp/v2/pages&slug=' + 'info', https.Agent({rejectUnauthorized: false})),
+      axios.get(state.apiRoot + 'wp/v2/pages&slug=' + 'cv', https.Agent({rejectUnauthorized: false})),
+      axios.get(state.apiRoot + 'wp/v2/pages&slug=' + 'newsletter', https.Agent({rejectUnauthorized: false})),
+      axios.get(state.apiRoot + 'wp/v2/pages&slug=' + 'footer', https.Agent({rejectUnauthorized: false})),
     ])
 
     commit('SET_ABOUTCONTENT', [infoRes.data[0], cvRes.data[0],newsletterRes.data[0],footerRes.data[0]])
 
     // GET ANY NEWS
 
-    const newsRes = await axios.get(state.apiRoot + 'wp/v2/news', state.axiosAgent)
+    const newsRes = await axios.get(state.apiRoot + 'wp/v2/news', https.Agent({rejectUnauthorized: false}))
     var shownews = newsRes.data[0].acf.showhide
     if (shownews === true) {
       if (!state.appinitated) {
@@ -199,7 +198,7 @@ export const actions = {
 
     // GET PROJECT LIST
 
-    const projectsRes = await axios.get(state.apiRoot + 'wp/v2/projects', state.axiosAgent)
+    const projectsRes = await axios.get(state.apiRoot + 'wp/v2/projects', https.Agent({rejectUnauthorized: false}))
     commit('SET_PROJECTS', projectsRes.data)
   }
 }
