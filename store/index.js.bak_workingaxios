@@ -1,0 +1,155 @@
+import Vuex from 'vuex'
+import axios from 'axios'
+
+const createStore = () => {
+  return new Vuex.Store({
+    state: {
+      locales: ['en', 'nl'],
+      locale: 'nl',
+      n: 1,
+      menu: false,
+      appinitated: false,
+      news: false,
+      newscontent: [],
+      aboutcontent: [],
+      readmore: false,
+      about: false,
+      nighttime: false,
+      screensize: 0,
+      // xlscreen: false,
+      // smallscreen: false,
+      screensizeformat: '',
+      projects: [],
+      apiRoot: 'https://api.sandervanwettum.com/?rest_route=/',
+      viewing: '',
+    },
+    getters: {
+      getappinitated(state) {
+        return state.appinitated
+      },
+
+      getprojects(state) {
+        return state.projects
+      },
+
+      nighttime(state) {
+        return state.nighttime
+      },
+
+      getscreensize(state) {
+        return state.screensize
+      },
+
+      scrsize(state) {
+        return state.screensizeformat
+      },
+
+      getnews(state) {
+        return state.news
+      },
+
+      getaboutcontent(state) {
+        return state.aboutcontent
+      },
+
+      getnewscontent(state) {
+        return state.newscontent
+      },
+
+      getmenu(state) {
+        return state.menu
+      },
+      getreadmore(state) {
+        return state.readmore
+      },
+
+      getabout(state) {
+        return state.about
+      },
+
+      getviewing(state) {
+        return state.viewing
+      }
+    },
+    mutations: {
+
+      SET_APPINITIATED(state, toggle) {
+        state.appinitated = toggle;
+      },
+
+      SET_NIGHTTIME(state, toggle) {
+        state.nighttime = toggle;
+      },
+
+      SET_PROJECTS(state, content) {
+        state.projects = content;
+      },
+
+      SET_VIEWING(state, name) {
+        state.viewing = name;
+
+      },
+
+      SET_READMORE(state, toggle) {
+        state.readmore = toggle;
+      },
+
+      SET_ABOUT(state, toggle) {
+        state.about = toggle;
+      },
+
+      SET_NEWS(state, toggle) {
+        state.news = toggle;
+      },
+      SET_NEWSCONTENT(state, data) {
+        state.newscontent = data;
+      },
+
+      SET_ABOUTCONTENT(state, data) {
+        state.aboutcontent = data;
+      },
+
+      SET_MENU(state, toggle) {
+        state.menu = toggle;
+      },
+
+      SET_SCREENSIZE(state, screensize) {
+        state.screensize = screensize;
+      },
+
+      SET_SCREENSIZEFORMAT(state, screensizeformat) {
+        state.screensizeformat = screensizeformat;
+      }
+    },
+    // actions: {
+    //   async browserInit({
+    //     commit
+    //   }) {
+    //     let [infoRes, cvRes] = await Promise.all([
+    //       axios.get(state.apiRoot + 'wp/v2/pages&slug=' + 'info'),
+    //       axios.get(state.apiRoot + 'wp/v2/pages&slug=' + 'cv'),
+    //     ])
+    //     console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+    //     commit('SET_ABOUTCONTENT', [infoRes.data[0], cvRes.data[0]])
+    //   }
+    // }
+    actions: {
+      async nuxtServerInit({
+        commit,state
+      }, {
+        req
+      }) {
+          let [infoRes, cvRes] = await Promise.all([
+            axios.get(state.apiRoot + 'wp/v2/pages&slug=' + 'info'),
+            axios.get(state.apiRoot + 'wp/v2/pages&slug=' + 'cv'),
+          ])
+
+          commit('SET_ABOUTCONTENT', [infoRes.data[0], cvRes.data[0]])
+
+        // commit('SET_ABOUTCONTENT', ['hey','nan'])
+      }
+    }
+  })
+}
+
+export default createStore;

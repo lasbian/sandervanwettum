@@ -1,0 +1,183 @@
+html {
+  font-size: 1.25rem;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+}
+
+.androidFontBoostHack {
+  max-height: 9999999px;
+}
+
+a:hover {
+    color: #0915409c;
+}
+
+::selection {
+  background: #091540;
+  color: white;
+  /* WebKit/Blink Browsers */
+}
+
+::-moz-selection {
+  background: #091540;
+  /* Gecko Browsers */
+}
+
+@media screen and (max-width: 768px) {
+  .is-size-6 {
+    font-size: 0.9rem !important;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1620px) {
+  .is-size-6 {
+    font-size: 0.9rem !important;
+  }
+  /* html {
+    font-size: 1.25rem !important;
+  } */
+}
+
+
+@media screen and (min-width: 1921px) {
+  .is-size-6 {
+    font-size: 1.4rem !important;
+  }
+  html {
+    /* font-size: 1.4rem !important; */
+  }
+}
+
+.is-green {
+  background: #D4E4D9;
+}
+
+.is-peach {
+  background: #FFE0DA;
+}
+
+.is-peach-opacity {
+  background: rgba(255, 224, 218, 0.75);
+}
+
+.is-gray {
+  background: #d5d6d5;
+}
+
+.is-bluish {
+  background: #E9F5F5;
+}
+
+.is-darkblue {
+  background: #091540;
+}
+
+.is-darkblue-text {
+  color: #091540;
+}
+
+.is-darkgray {
+  background: #232323;
+}
+
+.is-white {
+  background: #FFFFFF;
+}
+
+.is-white-text {
+  opacity: 0;
+  color: #FFFFFF;
+}
+
+.is-lightblue {
+  background: #e9f5f5;
+}
+
+a:active {
+  outline: none !important;
+}
+
+a {
+  outline: none !important;
+}
+
+.nuxt-link-exact-active {
+  -webkit-box-shadow: 0px -2px 0px 0px #091540 inset;
+  -moz-box-shadow: 0px -2px 0px 0px #091540 inset;
+  box-shadow: 0px -2px 0px 0px #091540 inset;
+}
+
+.nuxt-link-exact-active .is-underlined {
+  -webkit-box-shadow: 0px -2px 0px 0px #091540 inset;
+  -moz-box-shadow: 0px -2px 0px 0px #091540 inset;
+  box-shadow: 0px -2px 0px 0px #091540 inset;
+}
+
+.is-underlined-index {
+  -webkit-box-shadow: 0px -2px 0px 0px #091540 inset;
+  -moz-box-shadow: 0px -2px 0px 0px #091540 inset;
+  box-shadow: 0px -2px 0px 0px #091540 inset;
+}
+
+.is-half {
+  width: 50%;
+}
+
+.is-third {
+  width: 33.33333%;
+}
+
+@keyframes opacityfadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes opacityfadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.fadein-on-load {
+  opacity: 0;
+  animation: 0.4s ease-in-out opacityfadein;
+  animation-fill-mode: forwards;
+  -webkit-animation: 0.4s ease-in-out opacityfadein;
+  -webkit-animation-fill-mode: forwards;
+
+}
+
+img {
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+img[lazy=loading] {
+  /*your style here*/
+  opacity: 0
+}
+
+img[lazy=error] {
+  /*your style here*/
+}
+
+img[lazy=loaded] {
+  opacity: 1;
+  transition: opacity 0.4s;
+  /*your style here*/
+}
