@@ -188,7 +188,7 @@ export const actions = {
 
     // GET ANY NEWS
 
-    const newsRes = await axios.get(state.apiRoot + 'wp/v2/news')
+    const newsRes = await axios.get(state.apiRoot + 'wp/v2/news', state.axiosAgent)
     var shownews = newsRes.data[0].acf.showhide
     if (shownews === true) {
       if (!state.appinitated) {
@@ -199,7 +199,7 @@ export const actions = {
 
     // GET PROJECT LIST
 
-    const projectsRes = await axios.get(state.apiRoot + 'wp/v2/projects')
+    const projectsRes = await axios.get(state.apiRoot + 'wp/v2/projects', state.axiosAgent)
     commit('SET_PROJECTS', projectsRes.data)
   }
 }
