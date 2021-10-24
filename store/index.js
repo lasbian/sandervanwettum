@@ -17,7 +17,7 @@ export const state = () => ({
   screensize: 0,
   screensizeformat: '',
   projects: [],
-  apiRoot: 'https://api.sandervanwettum.com/?rest_route=/',
+  apiRoot: 'http://api.sandervanwettum.com/?rest_route=/',
   viewing: '',
   viewingproject:''
 })
